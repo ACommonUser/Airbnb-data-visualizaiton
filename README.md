@@ -1,3 +1,3 @@
 # Airbnb-data-visualizaiton
 
-The data visualization program based on Sydeny airbnb dwellings.
+The data visualization program based on Sydney airbnb dwellings
