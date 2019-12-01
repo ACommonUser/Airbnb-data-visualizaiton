@@ -1,0 +1,37 @@
+
+
+Number of listings
+COUNTD([Id])
+#nights
+{ FIXED [Id]:SUM(IF
+DATEDIFF('day',[Date],TODAY())<=365
+THEN MAX([Minimum Nights],3) ELSE 0
+END)}*2
+Income per month
+AVG({ FIXED [Id]:
+MIN([Price])}*[#nights])/12
+Avg #nights
+AVG({ FIXED [Id]: SUM([#nights])})
+Occupancy
+[Avg #nights]/365
+Availability
+IF { FIXED [Id]: AVG([Availability
+365])}>90 then 'HIGH' ELSE 'LOW'
+END
+#entire homes
+COUNTD(IF [Room Type]='Entire
+home/apt' THEN [Id] END)
+%entire homes
+[#entire  homes]/COUNTD([Id])
+#private rooms
+COUNTD(IF [Room Type]='Private
+room' THEN [Id] END)
+%private rooms
+[#private rooms]/COUNTD([Id])
+#shared rooms
+COUNTD(IF [Room Type]='Shared room'
+THEN [Id] END)
+%shared rooms
+[#shared rooms]/COUNTD([Id])
+Avg price
+AVG({ FIXED [Id]: AVG([Price])})
